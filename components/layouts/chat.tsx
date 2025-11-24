@@ -1,6 +1,6 @@
 'use client'
 
-import { X } from 'lucide-react'
+import { IconX } from '@tabler/icons-react'
 import { motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
@@ -44,10 +44,10 @@ export default function Chatbot() {
     }
 
     return (
-        <div className='fixed right-4 bottom-4 z-50'>
+        <div className='fixed bottom-0 z-50 flex w-full justify-center md:right-4 md:w-fit'>
             {open ? (
-                <Card className='flex h-96 w-xl flex-col rounded-2xl py-0 shadow-xl'>
-                    <CardContent className='flex h-full flex-col p-0'>
+                <Card className='flex max-h-[70vh] w-screen flex-col rounded-2xl rounded-b-none py-0 shadow-xl md:w-xl'>
+                    <CardContent className='p-0'>
                         <div className='flex items-center justify-between rounded-t-2xl bg-primary p-3 text-primary-foreground'>
                             <h2 className='font-semibold text-lg'>
                                 Chatbot Konveksi
@@ -55,14 +55,13 @@ export default function Chatbot() {
                             <Button
                                 size='icon'
                                 variant='ghost'
-                                className='text-white'
                                 onClick={() => setOpen(false)}
                             >
-                                <X className='h-5 w-5' />
+                                <IconX />
                             </Button>
                         </div>
 
-                        <ScrollArea className='flex-1 space-y-3 bg-background p-3'>
+                        <ScrollArea className='h-[50vh] flex-1 space-y-3 bg-background px-3'>
                             {messages.map((msg, i) => (
                                 <motion.div
                                     key={i}
@@ -75,7 +74,7 @@ export default function Chatbot() {
                                         className={`my-1 max-w-[80%] whitespace-pre-line rounded-xl px-3 py-2 text-sm shadow-sm ${
                                             msg.sender === 'user'
                                                 ? 'rounded-br-none bg-primary text-primary-foreground'
-                                                : 'rounded-bl-none border bg-white text-primary'
+                                                : 'rounded-bl-none border bg-card text-card-foreground'
                                         }`}
                                     >
                                         {msg.text}
@@ -101,7 +100,7 @@ export default function Chatbot() {
             ) : (
                 <Button
                     onClick={() => setOpen(true)}
-                    className='rounded-full px-5 py-3 text-base shadow-xl'
+                    className='rounded-xl rounded-b-none px-5 py-3 text-base shadow-xl'
                 >
                     Chat
                 </Button>
