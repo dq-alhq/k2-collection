@@ -1,8 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { Card } from '@/components/ui/card'
+import { siteConfig } from '@/config/site'
 import type { Category, Product } from '@/lib/generated/prisma/client'
-import { formatRupiah } from '@/lib/utils'
+import { formatRupiah, parseWhatsapp } from '@/lib/utils'
 
 export default function Detail({
     product,
@@ -65,7 +66,7 @@ export default function Detail({
 
                         <Link
                             target={'_blank'}
-                            href={`https://wa.me/62859175727576?text=Halo%20saya%20ingin%20menanyakan%20pesanan%20#${product.name.toLowerCase().replace(/\s/g, '%20')}`}
+                            href={`https://wa.me/${parseWhatsapp(siteConfig.contact.phone)}?text=Halo%20saya%20ingin%20menanyakan%20produk%20${product?.name.replace(/\s/g, '%20')}`}
                             className='mt-8 block rounded-lg bg-primary py-3 text-center font-semibold text-base text-white shadow-md transition-all duration-300 hover:bg-violet-700'
                         >
                             Hubungi Admin

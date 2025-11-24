@@ -1,6 +1,7 @@
 import { IconMail, IconMapPin, IconPhone } from '@tabler/icons-react'
 import MapLocation from '@/app/(guest)/about/map'
 import { Mdiv } from '@/components/animated'
+import { siteConfig } from '@/config/site'
 
 export default function Contact() {
     return (
@@ -27,7 +28,7 @@ export default function Contact() {
                                 Kantor Produksi
                             </h3>
                             <p className='text-gray-400 text-sm'>
-                                Rt.1b RW.1 Doudo, Panceng, Gresik
+                                {siteConfig.contact.address}
                             </p>
                         </div>
                     </div>
@@ -39,7 +40,7 @@ export default function Contact() {
                                 Kontak Kami
                             </h3>
                             <p className='text-gray-400 text-sm'>
-                                0856-4507-5556
+                                {siteConfig.contact.phone}
                             </p>
                         </div>
                     </div>
@@ -51,7 +52,7 @@ export default function Contact() {
                                 Email
                             </h3>
                             <p className='text-gray-400 text-sm'>
-                                k2colletion@gmail.com
+                                {siteConfig.contact.email}
                             </p>
                         </div>
                     </div>

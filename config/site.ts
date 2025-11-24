@@ -49,4 +49,9 @@ export const siteConfig = {
         twitter: 'https://x.com/dq.alhaqqi',
         docs: 'https://k2-collection.vercel.app',
     },
+    contact: {
+        phone: '085645075556',
+        email: 'k2collection@gmail.com',
+        address: 'RT.1b RW.1 Doudo, Panceng, Gresik',
+    },
 }

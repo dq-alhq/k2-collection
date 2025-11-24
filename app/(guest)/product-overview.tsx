@@ -22,7 +22,7 @@ export default async function ProductOverview({ search }: { search?: string }) {
         <Mdiv className='mx-auto grid max-w-7xl grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3'>
             {data?.map((item) => (
                 <div
-                    className='group relative cursor-pointer overflow-hidden rounded-2xl'
+                    className='group relative overflow-hidden rounded-2xl'
                     key={item.id}
                 >
                     <Image
@@ -36,7 +36,7 @@ export default async function ProductOverview({ search }: { search?: string }) {
                     <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent' />
 
                     <div className='absolute bottom-0 p-6'>
-                        <p className='mb-1 text-gray-300 text-sm'>
+                        <p className='mb-1 line-clamp-1 text-white'>
                             {item?.name}
                         </p>
                         <h3 className='mb-3 font-semibold text-2xl text-white'>

@@ -50,7 +50,7 @@ export default function HomePage() {
                 </Suspense>
                 <Mdiv className='mt-8 flex justify-center'>
                     <Link
-                        href='#'
+                        href='/our-products'
                         className={buttonVariants({
                             size: 'lg',
                             className: 'hover:scale-110 hover:gap-4',
