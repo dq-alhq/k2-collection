@@ -4,6 +4,7 @@ import {
     IconDashboard,
     IconLayout,
     IconPackage,
+    IconQuestionMark,
     IconUser,
 } from '@tabler/icons-react'
 import Link from 'next/link'
@@ -46,6 +47,11 @@ const data = {
             name: 'Produk',
             url: '/products',
             icon: IconPackage,
+        },
+        {
+            name: 'FAQ',
+            url: '/faqs',
+            icon: IconQuestionMark,
         },
     ],
     tentang: [

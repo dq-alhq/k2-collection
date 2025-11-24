@@ -4,7 +4,13 @@ import { type NextRequest, NextResponse } from 'next/server'
 // Daftar halaman
 const PUBLIC_PAGES = ['/', '/about', '/our-products'] // bebas diakses tanpa login
 const GUEST_ONLY_PAGES = ['/sign-in', '/register', '/forgot-password'] // hanya untuk guest
-const PROTECTED_PAGES = ['/dashboard', '/categories', '/products', '/profile'] // harus login
+const PROTECTED_PAGES = [
+    '/dashboard',
+    '/categories',
+    '/products',
+    '/profile',
+    '/faqs',
+] // harus login
 
 export async function proxy(request: NextRequest) {
     const sessionCookie = getSessionCookie(request)
@@ -43,5 +49,6 @@ export const config = {
         '/sign-in',
         '/register',
         '/forgot-password',
+        '/faqs',
     ],
 }

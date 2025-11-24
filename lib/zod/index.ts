@@ -36,3 +36,10 @@ export const profileSchema = z.object({
 })
 
 export type ProfileSchema = z.infer<typeof profileSchema>
+
+export const faqSchema = z.object({
+    question: z.string().min(3, { message: 'Pertanyaan minimal 3 karakter' }),
+    answer: z.string().min(3, { message: 'Jawaban minimal 3 karakter' }),
+})
+
+export type FaqSchema = z.infer<typeof faqSchema>
