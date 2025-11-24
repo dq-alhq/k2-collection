@@ -3,7 +3,7 @@ import { Mdiv } from '@/components/animated'
 
 export default function Features() {
     return (
-        <Mdiv className='mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-8 sm:grid-cols-3'>
+        <Mdiv className='mx-auto mt-10 grid max-w-5xl grid-cols-1 gap-8 px-4 sm:grid-cols-3 md:px-6'>
             <div className='flex flex-col items-center'>
                 <IconShirt className='mb-4 size-12 text-primary' />
                 <h3 className='mb-2 font-semibold text-xl'>
