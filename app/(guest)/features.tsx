@@ -9,7 +9,7 @@ export default function Features() {
                 <h3 className='mb-2 font-semibold text-xl'>
                     Bahan & Sablon Lengkap
                 </h3>
-                <p className='text-muted-foreground text-sm'>
+                <p className='text-center text-muted-foreground text-sm'>
                     Tersedia bahan cotton, fleece, drill & sablon DTF, rubber,
                     plastisol, bordir.
                 </p>
@@ -18,7 +18,7 @@ export default function Features() {
             <div className='flex flex-col items-center'>
                 <IconBolt className='mb-4 size-12 text-primary' />
                 <h3 className='mb-2 font-semibold text-xl'>Pengerjaan Cepat</h3>
-                <p className='text-muted-foreground text-sm'>
+                <p className='text-center text-muted-foreground text-sm'>
                     Estimasi 3–10 hari untuk 12–50 pcs. Bisa express.
                 </p>
             </div>
@@ -28,7 +28,7 @@ export default function Features() {
                 <h3 className='mb-2 font-semibold text-xl'>
                     Pengiriman ke Seluruh Penjuru
                 </h3>
-                <p className='text-muted-foreground text-sm'>
+                <p className='text-center text-muted-foreground text-sm'>
                     Kami siap mengirimkan pakaian custom ke seluruh penjuru
                     Dunia dan Akhirat.
                 </p>

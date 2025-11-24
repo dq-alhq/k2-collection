@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/empty'
 import { formatRupiah } from '@/lib/utils'
 
-export default async function ProductOverview({ search }: { search: string }) {
+export default async function ProductOverview({ search }: { search?: string }) {
     const { data } = await getProducts({
         limit: 6,
         skip: 0,

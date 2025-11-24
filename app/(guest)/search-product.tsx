@@ -1,19 +1,15 @@
-'use client'
 import Form from 'next/form'
-import { useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
-export default function SearchProduct() {
-    const searchParams = useSearchParams()
-    const search = searchParams.get('search')
+export default function SearchProduct({ search = '' }: { search?: string }) {
     return (
         <Form
             action='/our-products'
             className='mt-8 flex w-full max-w-md flex-row flex-wrap items-center justify-center gap-3 sm:flex-nowrap'
         >
             <Input
-                defaultValue={search ?? ''}
+                defaultValue={search}
                 name='search'
                 type='text'
                 placeholder='Cari Produk...'

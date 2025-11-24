@@ -15,12 +15,7 @@ export const metadata: Metadata = {
     title: 'Home',
 }
 
-export default async function HomePage({
-    searchParams,
-}: {
-    searchParams: Promise<{ search?: string }>
-}) {
-    const params = await searchParams
+export default function HomePage() {
     return (
         <>
             <section className='relative h-[85vh] w-full overflow-hidden'>
@@ -39,6 +34,7 @@ export default async function HomePage({
                     </p>
                 </Mdiv>
                 <Suspense
+                    key='home'
                     fallback={
                         <div className='mx-auto grid max-w-7xl grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3'>
                             <Skeleton className='h-80 w-full' />
@@ -50,7 +46,7 @@ export default async function HomePage({
                         </div>
                     }
                 >
-                    <ProductOverview search={params?.search || ''} />
+                    <ProductOverview search={''} />
                 </Suspense>
                 <Mdiv className='mt-8 flex justify-center'>
                     <Link

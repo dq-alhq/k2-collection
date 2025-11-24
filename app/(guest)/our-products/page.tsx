@@ -28,11 +28,15 @@ export default async function ProdukKamiPage({
                 </p>
             </Mdiv>
             <Mdiv className='mx-auto mb-12 flex justify-center px-4 md:px-6 lg:px-8'>
-                <SearchProduct />
+                <Suspense
+                    fallback={<Skeleton className='h-10 w-full max-w-md' />}
+                >
+                    <SearchProduct search={params?.search || ''} />
+                </Suspense>
             </Mdiv>
             <div className='px-6'>
                 <Suspense
-                    key={JSON.stringify(params)}
+                    key={`${JSON.stringify(params)}-products`}
                     fallback={
                         <div className='mx-auto grid max-w-7xl grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3'>
                             <Skeleton className='h-80 w-full' />
