@@ -1,37 +1,93 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
-  "vcs": {
-    "enabled": true,
-    "clientKind": "git",
-    "useIgnoreFile": true
-  },
-  "files": {
-    "ignoreUnknown": true,
-    "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
-  },
-  "formatter": {
-    "enabled": true,
-    "indentStyle": "space",
-    "indentWidth": 2
-  },
-  "linter": {
-    "enabled": true,
-    "rules": {
-      "recommended": true,
-      "suspicious": {
-        "noUnknownAtRules": "off"
-      }
+    "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
     },
-    "domains": {
-      "next": "recommended",
-      "react": "recommended"
+    "files": {
+        "ignoreUnknown": true,
+        "includes": ["**", "!node_modules", "!.next", "!dist", "!build"]
+    },
+    "formatter": {
+        "enabled": true,
+        "indentStyle": "space",
+        "indentWidth": 4
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "performance": {
+                "noImgElement": "off"
+            },
+            "style": {
+                "noNonNullAssertion": "off",
+                "noParameterAssign": "warn",
+                "useImportType": "warn"
+            },
+            "complexity": {
+                "useArrowFunction": "error",
+                "noForEach": "off"
+            },
+            "a11y": {
+                "noRedundantRoles": "off",
+                "noSvgWithoutTitle": "off",
+                "useValidAnchor": "off",
+                "useSemanticElements": "off"
+            },
+            "correctness": {
+                "noUnusedImports": {
+                    "level": "error",
+                    "fix": "safe",
+                    "options": {}
+                },
+                "useExhaustiveDependencies": "off",
+                "useHookAtTopLevel": "error",
+                "noChildrenProp": "off",
+                "useUniqueElementIds": "off"
+            },
+            "suspicious": {
+                "noDocumentCookie": "off",
+                "noExplicitAny": "off",
+                "noArrayIndexKey": "off"
+            },
+            "security": {
+                "noDangerouslySetInnerHtml": "off"
+            },
+            "nursery": {
+                "useSortedClasses": {
+                    "level": "error",
+                    "fix": "safe",
+                    "options": {
+                        "attributes": ["classList"],
+                        "functions": ["twMerge", "twJoin", "cn"]
+                    }
+                }
+            }
+        },
+        "domains": {
+            "next": "recommended",
+            "react": "recommended"
+        }
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "single",
+            "arrowParentheses": "always",
+            "bracketSameLine": false,
+            "bracketSpacing": true,
+            "jsxQuoteStyle": "single",
+            "quoteProperties": "asNeeded",
+            "semicolons": "asNeeded",
+            "trailingCommas": "all"
+        }
+    },
+    "assist": {
+        "actions": {
+            "source": {
+                "organizeImports": "on"
+            }
+        }
     }
-  },
-  "assist": {
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    }
-  }
 }
