@@ -1,12 +1,14 @@
 'use client'
 
 import { IconX } from '@tabler/icons-react'
+import { marked } from 'marked'
 import { motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { badgeVariants } from '../ui/badge'
 
 export default function Chatbot() {
     const [open, setOpen] = useState(false)
@@ -17,6 +19,11 @@ export default function Chatbot() {
         },
     ])
     const [input, setInput] = useState('')
+    const [suggestions, setSuggestions] = useState([
+        'Ada produk apa saja',
+        'Kapan waktu pengerjaan',
+        'Buka hari apa',
+    ])
     const bottomRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -41,6 +48,28 @@ export default function Chatbot() {
 
         const data = await res.json()
         setMessages((prev) => [...prev, { sender: 'bot', text: data.reply }])
+        setSuggestions(data.suggestions)
+    }
+
+    const sendSuggestionMessage = async (message: string) => {
+        if (!message.trim()) return
+
+        const userText = message
+        setMessages((prev) => [...prev, { sender: 'user', text: userText }])
+        setInput('')
+
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_BASE_URL}/api/chat`,
+            {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message: userText }),
+            },
+        )
+
+        const data = await res.json()
+        setMessages((prev) => [...prev, { sender: 'bot', text: data.reply }])
+        setSuggestions(data.suggestions)
     }
 
     return (
@@ -68,20 +97,40 @@ export default function Chatbot() {
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.2 }}
-                                    className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
+                                    className={`flex items-center ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                                 >
                                     <div
-                                        className={`my-1 max-w-[80%] whitespace-pre-line rounded-xl px-3 py-2 text-sm shadow-sm ${
+                                        className={`my-1 flex max-w-[80%] max-w-none flex-col gap-0 whitespace-pre-line rounded-xl px-3 py-2 text-sm shadow-sm **:[a]:text-emerald-500 **:[ul]:grid ${
                                             msg.sender === 'user'
                                                 ? 'rounded-br-none bg-primary text-primary-foreground'
                                                 : 'rounded-bl-none border bg-card text-card-foreground'
                                         }`}
-                                    >
-                                        {msg.text}
-                                    </div>
+                                        dangerouslySetInnerHTML={{
+                                            __html: marked.parse(msg.text),
+                                        }}
+                                    />
                                 </motion.div>
                             ))}
+
                             <div ref={bottomRef} />
+                            <div className='my-2 flex flex-wrap gap-2'>
+                                {suggestions.map((suggestion, index) => (
+                                    <motion.button
+                                        onClick={() =>
+                                            sendSuggestionMessage(suggestion)
+                                        }
+                                        key={index}
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.2 }}
+                                        className={badgeVariants({
+                                            variant: 'default',
+                                        })}
+                                    >
+                                        {suggestion}
+                                    </motion.button>
+                                ))}
+                            </div>
                         </ScrollArea>
 
                         <div className='flex gap-2 border-t bg-background p-3'>

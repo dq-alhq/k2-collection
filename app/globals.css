@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@plugin '@tailwindcss/typography';
+
 @custom-variant dark (&:is(.dark *));
 
 :root {
@@ -49,8 +51,7 @@
     --shadow-lg:
         0px 4px 8px -1px oklch(0 0 0 / 0.1), 0px 4px 6px -2px oklch(0 0 0 / 0.1);
     --shadow-xl:
-        0px 4px 8px -1px oklch(0 0 0 / 0.1), 0px 8px 10px -2px
-        oklch(0 0 0 / 0.1);
+        0px 4px 8px -1px oklch(0 0 0 / 0.1), 0px 8px 10px -2px oklch(0 0 0 / 0.1);
     --shadow-2xl: 0px 4px 8px -1px oklch(0 0 0 / 0.25);
 }
 
