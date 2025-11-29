@@ -61,7 +61,7 @@ export default function Chatbot() {
                             </Button>
                         </div>
 
-                        <ScrollArea className='h-[50vh] flex-1 space-y-3 bg-background px-3'>
+                        <ScrollArea className='h-[50vh] flex-1 space-y-3 bg-background px-3 py-2'>
                             {messages.map((msg, i) => (
                                 <motion.div
                                     key={i}
